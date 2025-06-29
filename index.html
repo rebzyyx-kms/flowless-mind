@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>her room</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Courier New', monospace;
+      background: url('https://i.imgur.com/HsWCFpN.png') no-repeat center center;
+      background-size: cover;
+      height: 100vh;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .dialogue-box {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .choices {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .choices button {
+      padding: 10px 20px;
+      background-color: #ff7aa2;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .choices button:hover {
+      background-color: #ff4d88;
+    }
+  </style>
+</head>
+<body>
+  <div class="dialogue-box" id="dialogue">
+    She sits in silence. The air is heavy.
+    <div class="choices">
+      <button onclick="nextLine('look')">Look at the window</button>
+      <button onclick="nextLine('cry')">Lie on the bed</button>
+    </div>
+  </div>
+
+  <script>
+    function nextLine(choice) {
+      const dialogue = document.getElementById("dialogue");
+
+      if (choice === 'look') {
+        dialogue.innerHTML = `She wonders if anyone sees her pain.
+          <div class="choices">
+            <button onclick="nextLine('close')">Close the window</button>
+            <button onclick="nextLine('wait')">Just sit there</button>
+          </div>`;
+      } else if (choice === 'cry') {
+        dialogue.innerHTML = `She curls up under the blanket, hoping to disappear.
+          <div class="choices">
+            <button onclick="nextLine('sleep')">Try to sleep</button>
+            <button onclick="nextLine('scream')">Scream (quietly)</button>
+          </div>`;
+      } else {
+        dialogue.innerHTML = `The silence stays. She breathes. You're still here.`;
+      }
+    }
+  </script>
+</body>
+</html>
